@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página HTML com JavaScript</title>
+    <style>
+        body {
+            background-image:url(emoji-coco.webp);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            padding: 5px;
+            margin: 5px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        p {
+            margin-top: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Quantos banheiros tem em sua casa para fazer coco</h1>
+
+    <label for="nome">DIgite os banheiros que contem ai:</label>
+    <input type="text" id="nome" placeholder="Seu banheiro">
+    <button id="meuBotao">Cagar-me!</button>
+    <button id="limparBotao">Limpar com papel higienico</button>
+
+    <p id="minhaMensagem"></p>
+
+    <h2>Banheiros digitadas:</h2>
+    <ul id="nomesDigitados"></ul>
+
+    <script>
+        document.getElementById("meuBotao").addEventListener("click", function () {
+            const nome = document.getElementById("nome").value;
+
+            // Verifica se um nome foi digitado (não está vazio)
+            if (nome) {
+                // Se um nome foi digitado, exibe uma saudação personalizada na área "minhaMensagem"
+                document.getElementById("minhaMensagem").innerHTML = "VA CAGAR, " + nome + "!";
+
+                // Obtém a lista de nomes digitados com o id "nomesDigitados"
+                const listaNomes = document.getElementById("nomesDigitados");
+
+                // Cria um elemento de lista (li) para o nome digitado
+                const li = document.createElement("li");
+
+                // Adiciona o nome digitado como texto ao elemento li
+                li.appendChild(document.createTextNode(nome));
+
+                // Adiciona o elemento li à lista de nomes digitados
+                listaNomes.appendChild(li);
+            } else {
+                // Se nenhum nome foi digitado, exibe uma mensagem de solicitação no elemento "minhaMensagem"
+                document.getElementById("minhaMensagem").innerHTML = "Por favor, digite seu nome.";
+            }
+        });
+
+        // Adiciona um ouvinte de evento ao botão com o id "limparBotao" quando ele é clicado
+        document.getElementById("limparBotao").addEventListener("click", function () {
+            // Limpa o campo de entrada com o id "nome"
+            document.getElementById("nome").value = "";
+
+            // Limpa a mensagem exibida no elemento "minhaMensagem"
+            document.getElementById("minhaMensagem").innerHTML = "";
+
+            // Limpa a lista de nomes digitados no elemento "nomesDigitados"
+            document.getElementById("nomesDigitados").innerHTML = "";
+        });
+
+    </script>
+</body>
+
+</html>
