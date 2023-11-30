@@ -23,13 +23,12 @@ function handleCellClick(event) {
 
   if (gameOver || cells[clickedCellIndex].textContent !== '') return;
 
-  const img = document.createElement('img');
-  img.src = 'https://upload.wikimedia.org/wikipedia/pt/thumb/e/ed/Shrek%28personagem%29.jpg/150px-Shrek%28personagem%29.jpg'; // Substitua pelo URL direto da imagem desejada
-  img.alt = currentPlayer;
-
-  cells[clickedCellIndex].textContent = '';
-  cells[clickedCellIndex].appendChild(img);
-  cells[clickedCellIndex].classList.add('selected');
+  const jogadorImagem = document.createElement('img');
+  jogadorImagem.src = jogadorImagens[currentPlayer];
+  jogadorImagem.style.maxWidth = '100%';
+  jogadorImagem.style.maxHeight = '100%';
+  clickedCell.innerHTML = '';
+  clickedCell.appendChild(jogadorImagem);
 
   if (checkWinner(currentPlayer)) {
     gameOver = true;
@@ -42,6 +41,11 @@ function handleCellClick(event) {
     currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
     message.textContent = `Vez do Jogador ${currentPlayer}`;
   }
+}
+
+const jogadorImagens = {
+  'X': 'shrek.jpg',
+  'O': 'Fiona.jpg'
 }
 
 // Função que verifica se há um vencedor.
